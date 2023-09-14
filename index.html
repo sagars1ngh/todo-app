@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 3 Conditional Rendering</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Conditional Rendering Example</h1>
+        
+        <!-- Using v-if and v-else -->
+        <p v-if="showText">This text is shown using v-if.</p>
+        <p v-else>This text is shown using v-else.</p>
+        
+        <!-- Using v-show -->
+        <p v-show="showParagraph">This paragraph can be toggled with v-show.</p>
+        
+        <!-- Using v-for -->
+        <ul>
+            <li v-for="(item, index) in items" :key="index">{{ item }}</li>
+        </ul>
+        
+        <!-- Using v-if with v-for -->
+        <ul>
+            <li v-for="(fruit, index) in fruits" :key="index">
+                <span v-if="fruit.startsWith('A')">This fruit starts with 'A': {{ fruit }}</span>
+                <span v-else>This fruit doesn't start with 'A': {{ fruit }}</span>
+            </li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.0.0/dist/vue.global.prod.js"></script>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    showText: true,
+                    showParagraph: true,
+                    items: ['Item 1', 'Item 2', 'Item 3'],
+                    fruits: ['Apple', 'Banana', 'Cherry', 'Orange']
+                };
+            }
+        });
+
+        app.mount('#app');
+    </script>
+</body>
+</html>
